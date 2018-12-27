@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  mongors1:
+    image: mongo:3.6
+    command: mongod --smallfiles --replSet rpl --dbpath /data/db --journal --oplogSize 16 --noauth --port 27017
+    ports:
+      - "27017:27017"
+  mongors2:
+    image: mongo:3.6
+    command: mongod --smallfiles --replSet rpl --dbpath /data/db --journal --oplogSize 16 --noauth --port 27017
+  mongorsarb:
+    image: mongo:3.6
+    command: mongod --smallfiles --replSet rpl --dbpath /data/db --oplogSize 16 --noauth --port 27017
